@@ -39,5 +39,8 @@ public class Doctor {
     private String email;
     
     @Column(name = "availability")
-    private String availability;   
+    private String availability;  
+    
+    @Column(name = "password")
+    private String password;
 }

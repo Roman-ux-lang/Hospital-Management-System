@@ -8,5 +8,6 @@ public interface PatientDAO {
     
     public Patient getPatient(Long id);
     public List<Patient> getPatients();
+    public void createPatient(Patient patient);
 
 }

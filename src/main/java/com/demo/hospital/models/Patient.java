@@ -32,4 +32,7 @@ public class Patient {
 
     @Column(name = "contact_info")
     private String email;
+
+    @Column(name = "password")
+    private String password;
 }
