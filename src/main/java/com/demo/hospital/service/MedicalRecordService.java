@@ -1,7 +1,5 @@
 package com.demo.hospital.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,7 @@ public class MedicalRecordService {
     @Autowired
     MedicalRecordRepository medicalRecordRepository;
 
-    public List<MedicalRecord> getMedicalRecordsByPatientId(Long patientId){
+    public MedicalRecord getMedicalRecordsByPatientId(Long patientId){
         return medicalRecordRepository.findMedicalRecordsByPatientId(patientId);
     }
 
