@@ -3,28 +3,41 @@ package com.demo.hospital.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.hospital.DAO.doctor.DoctorDAO;
 import com.demo.hospital.models.Doctor;
 
 @RestController
+@RequestMapping("/api/doctors")
 public class DoctorController {
 
     @Autowired
     DoctorDAO doctorDAO;
 
-    @RequestMapping(value = "api/doctor/{id}", method = RequestMethod.GET)
-    public Doctor getDoctor(@PathVariable Long id){
-        return doctorDAO.getDoctor(id);
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Doctor doctor){
+        boolean loggedInDoctor = doctorDAO.getDoctorByCredentials(doctor);
+
+        if(loggedInDoctor != false){
+            return  ResponseEntity.ok("Welcome");
+        }
+        return ResponseEntity.ok("Fail");
     }
 
-    @RequestMapping(value = "api/doctors", method = RequestMethod.GET )
-    public List<Doctor> getDoctors(){
-        return doctorDAO.getDoctors();
+    @GetMapping("/{id}")
+    public ResponseEntity<Doctor> getDoctor(@PathVariable Long id){
+        return ResponseEntity.ok(doctorDAO.getDoctor(id));
     }
 
+    @GetMapping
+    public ResponseEntity<List<Doctor>> getDoctors(){
+        return ResponseEntity.ok(doctorDAO.getDoctors());
+    }
 }

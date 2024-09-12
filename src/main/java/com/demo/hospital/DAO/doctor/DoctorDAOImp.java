@@ -30,4 +30,18 @@ public class DoctorDAOImp implements DoctorDAO {
 
     }
 
+    @Override
+    public boolean getDoctorByCredentials(Doctor doctor){
+        String query = "FROM Doctor WHERE email = :email AND password = :password";
+        List<Doctor> list = entityManager.createQuery(query)
+        .setParameter("email", doctor.getEmail())
+        .setParameter("password", doctor.getPassword())
+        .getResultList();
+
+        if(list.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

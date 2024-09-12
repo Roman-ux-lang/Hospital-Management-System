@@ -57,9 +57,3 @@ window.onload = function(){
 
     }
 }
-
-
-
-
-
-

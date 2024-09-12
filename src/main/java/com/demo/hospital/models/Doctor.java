@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Getter
 @Setter
 @ToString
@@ -38,9 +37,13 @@ public class Doctor {
     @Column(name = "contact_info")
     private String email;
     
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "phone")
+    private String phone;
+
     @Column(name = "availability")
     private String availability;  
     
-    @Column(name = "password")
-    private String password;
 }

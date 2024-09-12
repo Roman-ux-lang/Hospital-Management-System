@@ -28,13 +28,4 @@ public class PatientDAOImp implements PatientDAO {
         String query = "FROM Patient";
         return entityManager.createQuery(query).getResultList();
     }
-
-    @Override
-    public void createPatient(Patient patient){
-        entityManager.merge(patient);
-    }
-
-
-
-
 }
