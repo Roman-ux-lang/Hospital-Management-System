@@ -27,7 +27,6 @@ public class DoctorDAOImp implements DoctorDAO {
     public List<Doctor> getDoctors(){
         String query = "FROM Doctor";
         return entityManager.createQuery(query).getResultList();
-
     }
 
     @Override
@@ -43,5 +42,10 @@ public class DoctorDAOImp implements DoctorDAO {
         }else{
             return true;
         }
+    }
+
+    @Override
+    public void createDoctor(Doctor doctor){
+        entityManager.merge(doctor);
     }
 }

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.hospital.DAO.doctor.DoctorDAO;
 import com.demo.hospital.models.Doctor;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 @RestController
 @RequestMapping("/api/doctors")
 public class DoctorController {
@@ -39,5 +42,13 @@ public class DoctorController {
     @GetMapping
     public ResponseEntity<List<Doctor>> getDoctors(){
         return ResponseEntity.ok(doctorDAO.getDoctors());
+    }
+
+    @PostMapping("/create")
+    public void createDoctor(@RequestBody Doctor doctor){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1,1024,1, doctor.getPassword());
+        doctor.setPassword(hash);
+        doctorDAO.createDoctor(doctor);
     }
 }
