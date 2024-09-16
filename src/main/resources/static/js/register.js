@@ -1,3 +1,8 @@
+// This script handles the registration process for new doctors on the website. 
+// It listens for user input, validates password matching, and sends the data 
+// to the server to create a new doctor account. If successful, the user is 
+// redirected to the login page.
+
 $(document).ready(function(){
 
 });

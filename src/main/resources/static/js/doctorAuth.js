@@ -1,3 +1,8 @@
+// This script handles the login process for doctors.
+// It captures the user's email and password, sends them to the backend for authentication,
+// and, based on the server's response, either redirects to the dashboard or shows an error message.
+
+
 $(document).ready(function(){
 
 });
