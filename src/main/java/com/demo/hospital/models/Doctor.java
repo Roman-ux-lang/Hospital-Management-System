@@ -26,10 +26,10 @@ public class Doctor {
     private Long id;
 
     @Column(name = "first_name")
-    private String fname;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String lname;
+    private String lastName;
 
     @Column(name = "specialty")
     private String specialty;
