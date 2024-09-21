@@ -1,3 +1,7 @@
+// This script fetches and displays a list of doctors in a table.
+// It retrieves the doctor data from the server, populates the HTML table with the information,
+// and initializes the DataTable plugin for sorting, searching, and pagination functionality.
+
 $(document).ready(function(){
     getDoctors();
     $('#dataTableDoctors').DataTable();
