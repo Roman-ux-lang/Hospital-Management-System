@@ -1,3 +1,7 @@
+// This script retrieves and displays a list of patients, allowing for detailed medical record viewing.
+// It fetches patient data from the server, generates HTML table rows with patient information, 
+// and includes a button to view detailed medical records for each patient.
+
 $(document).ready(function(){
     getPatients(); 
 });
