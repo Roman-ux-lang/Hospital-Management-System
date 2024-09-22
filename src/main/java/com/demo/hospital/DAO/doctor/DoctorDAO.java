@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.demo.hospital.models.Doctor;
 
-
 public interface DoctorDAO {
 
     public Doctor getDoctor(Long id);
