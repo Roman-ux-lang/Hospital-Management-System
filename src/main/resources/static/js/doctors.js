@@ -7,7 +7,6 @@ $(document).ready(function(){
     $('#dataTableDoctors').DataTable();
 });
 
-
 async function getDoctors() {
     const request = await fetch('api/doctors', {
         method: 'GET',
