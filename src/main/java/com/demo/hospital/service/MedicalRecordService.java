@@ -11,7 +11,6 @@ public class MedicalRecordService {
 
     // private final MedicalRecordRepository medicalRecordRepository;
 
-    // @Autowired
     // public MedicalRecordService(MedicalRecordRepository medicalRecordRepository){
     //     this.medicalRecordRepository = medicalRecordRepository;
     // }

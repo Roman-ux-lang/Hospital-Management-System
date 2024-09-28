@@ -17,7 +17,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name = "doctors")
-
 public class Doctor {
 
     @Id
