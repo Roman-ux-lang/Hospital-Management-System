@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.demo.hospital.models.Doctor;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -30,18 +32,22 @@ public class DoctorDAOImp implements DoctorDAO {
     }
 
     @Override
-    public boolean getDoctorByCredentials(Doctor doctor){
-        String query = "FROM Doctor WHERE email = :email AND password = :password";
+    public Doctor getDoctorByCredentials(Doctor doctor){
+        String query = "FROM Doctor WHERE email = :email";
         List<Doctor> list = entityManager.createQuery(query)
         .setParameter("email", doctor.getEmail())
-        .setParameter("password", doctor.getPassword())
         .getResultList();
 
-        if(list.isEmpty()){
-            return false;
-        }else{
-            return true;
+        if(list.isEmpty()){return null;}
+
+        String passwordHashed = list.get(0).getPassword();
+        
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        
+        if(argon2.verify(passwordHashed, doctor.getPassword())){
+            return list.get(0);
         }
+        return null;
     }
 
     @Override

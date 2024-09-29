@@ -26,9 +26,9 @@ public class DoctorController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Doctor doctor){
-        boolean loggedInDoctor = doctorDAO.getDoctorByCredentials(doctor);
+        Doctor loggedInDoctor = doctorDAO.getDoctorByCredentials(doctor);
 
-        if(loggedInDoctor != false){
+        if(loggedInDoctor != null){
             return  ResponseEntity.ok("Welcome");
         }
         return ResponseEntity.ok("Fail");
