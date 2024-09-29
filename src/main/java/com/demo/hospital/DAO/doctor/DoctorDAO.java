@@ -10,4 +10,5 @@ public interface DoctorDAO {
     public List<Doctor> getDoctors();
     public Doctor getDoctorByCredentials(Doctor doctor);
     public void createDoctor(Doctor doctor);
+    
 }
